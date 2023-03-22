@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  * @author Haikal
  */
 public class LoginView extends javax.swing.JFrame {
+    public static String usernameField;
+    public static String passwordField;
 
     /**
      * Creates new form LoginView
@@ -243,15 +245,16 @@ public class LoginView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String usernameField = jTextField1.getText();
-        String passwordField = jPasswordField1.getText();
-        if (usernameField.isEmpty() || passwordField.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (jPasswordField1.getText().equals(RegisterView.passwordField)&&(jTextField1.getText().equals(RegisterView.usernameField))){
+            new HomeView().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Silahkan cek kembali username dan password anda.", "Akun tidak valid", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        new RegisterView().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
