@@ -136,7 +136,6 @@ public class LoginView extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 204, 204));
         jButton3.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(18, 20, 21));
-        jButton3.setText("Sudah punya akun? Login disini!");
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
@@ -144,6 +143,7 @@ public class LoginView extends javax.swing.JFrame {
         jButton3.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setLabel("Belum punya akun? Register disini!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
