@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author Haikal
  */
-public class LoginView extends javax.swing.JFrame {
+public class RegisterView extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginView
      */
-    public LoginView() {
+    public RegisterView() {
         initComponents();
     }
 
