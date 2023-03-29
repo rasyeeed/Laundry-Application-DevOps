@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.DBConnection;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,8 +16,11 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
+    DBConnection koneksi;
     public LoginView() {
         initComponents();
+        koneksi = new DBConnection();
+        koneksi.connect();
     }
 
     /**
