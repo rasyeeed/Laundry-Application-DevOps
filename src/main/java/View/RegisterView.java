@@ -4,13 +4,23 @@
  */
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
  * @author Haikal
  */
 public class RegisterView extends javax.swing.JFrame {
+    
+    Connection con = null;
+    PreparedStatement prs = null;
+    ResultSet rs = null;
     public static String usernameField;
     public static String passwordField;
 
@@ -257,7 +267,7 @@ public class RegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        String input = jTextField1.getText();
+        //String input = jTextField1.getText();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -267,17 +277,67 @@ public class RegisterView extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        if (jPasswordField1.getText().equals(jPasswordField2.getText())){
-            usernameField = jTextField1.getText();
-            passwordField = jPasswordField1.getText();
-            if(usernameField.isEmpty() || passwordField.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String user = "system";
+        String password = "Vdy19052003.";
+        Connection koneksi;
+        try {       
+            koneksi =  DriverManager.getConnection(url, user, password);
+            prs = koneksi.prepareStatement("INSERT INTO REGISTRASIUSER( ID_USER, USERNAME, PASSWORD) VALUES(?,?,?)");
+            prs.setString(1, "002");
+            prs.setString(2,jTextField1.getText());
+            prs.setString(3,jPasswordField1.getText());
+            
+            if (jPasswordField1.getText().equals(jPasswordField2.getText())){
+            
+                    if(jTextField1.getText().isEmpty() || jPasswordField1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        prs.executeUpdate();
+                        jTextField1.setText("");
+                        jPasswordField1.setText("");
+                        JOptionPane.showMessageDialog(null, "Sukses");
+                        new LoginView().setVisible(true);
+                    }
             }else{
-                new LoginView().setVisible(true);
+                JOptionPane.showMessageDialog(this, "Silahkan cek kembali password anda.", "Password tidak sama", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Silahkan cek kembali password anda.", "Password tidak sama", JOptionPane.INFORMATION_MESSAGE);
-        }        
+        } 
+        catch (Exception ex) 
+        {JOptionPane.showMessageDialog(null, ex);} 
+        
+//        try{
+//            
+//            String sql = "INSERT INTO REGISTRASIUSER( ID_USER, USERNAME, PASSWORD) VALUES(?,?,?)";
+//            
+//            con = DriverManager.getConnection(" jdbc:oracle:thin:@localhost:1521:orcl","system","Vdy19052003.");
+//            prs = con.prepareStatement(sql);
+//            prs.setString(1,jTextField1.getText());
+//            prs.setString(2,jPasswordField1.getText());
+//            
+//             if (jPasswordField1.getText().equals(jPasswordField2.getText())){
+//            
+//                    if(jTextField1.getText().isEmpty() || jPasswordField1.getText().isEmpty()){
+//                    JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
+//                    }else{
+//                        prs.executeUpdate();
+//                        jTextField1.setText("");
+//                        jPasswordField1.setText("");
+//                        new LoginView().setVisible(true);
+//                    }
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Silahkan cek kembali password anda.", "Password tidak sama", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//             
+//             
+//        }catch(Exception ex)
+//        
+//        {
+//            JOptionPane.showMessageDialog(null, ex);
+//            
+//        }
+                
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
