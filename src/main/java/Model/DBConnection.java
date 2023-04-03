@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 public class DBConnection {
     private Connection conn;
     private final String url = "jdbc:oracle:thin:@localhost:1521:flxnzz";
+    
     private final String username = "system";
     private final String password = "Fluxion47";
     

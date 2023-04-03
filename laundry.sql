@@ -5,4 +5,5 @@ CREATE TABLE adminLaundry(
     CONSTRAINT ADMINLAUNDRY_PK PRIMARY KEY (id_user) ENABLE
 );
 
-INSERT INTO adminlaundry VALUES('01','VIDYARATMAYANTI','12345VIDYA');
+INSERT INTO adminlaundry VALUES('047','FLXNZZ_','h3ll0_humanzz');
+select * from adminlaundry;
