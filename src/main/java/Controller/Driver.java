@@ -5,6 +5,7 @@
 package Controller;
 
 import View.LoginView;
+import View.RegisterView;
 
 /**
  *
@@ -12,8 +13,8 @@ import View.LoginView;
  */
 public class Driver {
 
-    public static void main(String[] args) {
-        LoginView loginView = new LoginView();
-        loginView.setVisible(true);
+    public static void main(String[] args) {        
+        LoginView login = new LoginView();
+        login.setVisible(true);
     }
 }
