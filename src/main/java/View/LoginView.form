@@ -165,7 +165,7 @@
               <Font name="Poppins SemiBold" size="25" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Daftar Akun"/>
+            <Property name="text" type="java.lang.String" value="Login Akun"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -259,7 +259,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="15" green="14" red="12" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Daftar Akun"/>
+                <Property name="text" type="java.lang.String" value="Login Akun"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

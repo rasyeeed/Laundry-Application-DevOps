@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.DBConnection;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,8 +18,11 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
+    DBConnection koneksi;
     public LoginView() {
         initComponents();
+        koneksi = new DBConnection();
+        koneksi.connect();
     }
 
     /**
@@ -95,7 +99,7 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 25)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Daftar Akun");
+        jLabel1.setText("Login Akun");
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -121,7 +125,7 @@ public class LoginView extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(18, 20, 21));
-        jButton2.setText("Daftar Akun");
+        jButton2.setText("Login Akun");
         jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -189,6 +193,8 @@ public class LoginView extends javax.swing.JFrame {
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
+        jButton2.getAccessibleContext().setAccessibleName("Login Akun");
+
         javax.swing.GroupLayout RegistrationPanelLayout = new javax.swing.GroupLayout(RegistrationPanel);
         RegistrationPanel.setLayout(RegistrationPanelLayout);
         RegistrationPanelLayout.setHorizontalGroup(
@@ -245,15 +251,20 @@ public class LoginView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (jPasswordField1.getText().equals(RegisterView.passwordField)&&(jTextField1.getText().equals(RegisterView.usernameField))){
-            new HomeView().setVisible(true);
+        
+        if (!(jTextField1.getText().isEmpty()) || !(jPasswordField1.getText().isEmpty())){
+            this.hide();
+            new PesananView().setVisible(true);
+            
         }else{
             JOptionPane.showMessageDialog(this, "Silahkan cek kembali username dan password anda.", "Akun tidak valid", JOptionPane.INFORMATION_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.hide();
         new RegisterView().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -285,11 +296,7 @@ public class LoginView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginView().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

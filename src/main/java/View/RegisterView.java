@@ -49,6 +49,7 @@ public class RegisterView extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         WelcomePanel.setBackground(new java.awt.Color(18, 20, 21));
 
@@ -273,7 +274,8 @@ public class RegisterView extends javax.swing.JFrame {
             if(usernameField.isEmpty() || passwordField.isEmpty()){
             JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
-                new LoginView().setVisible(true);
+                this.hide();
+                new PesananView().setVisible(true);
             }
         }else{
             JOptionPane.showMessageDialog(this, "Silahkan cek kembali password anda.", "Password tidak sama", JOptionPane.INFORMATION_MESSAGE);
