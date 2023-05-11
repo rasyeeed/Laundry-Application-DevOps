@@ -4,7 +4,10 @@
  */
 package View;
 
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import Model.DBConnection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -266,20 +269,28 @@ public class RegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        if (jPasswordField1.getText().equals(jPasswordField2.getText())){
-            usernameField = jTextField1.getText();
-            passwordField = jPasswordField1.getText();
-            if(usernameField.isEmpty() || passwordField.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Username atau Password tidak boleh kosong.", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                this.hide();
-                new PesananView().setVisible(true);
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Silahkan cek kembali password anda.", "Password tidak sama", JOptionPane.INFORMATION_MESSAGE);
-        }        
+        // Get the values from the input fields
+    String id = jTextField1.getText();
+    String username = jTextField1.getText();
+    String password = jPasswordField1.getText();
+
+    DBConnection db = new DBConnection();
+    db.connect();
+    String sql = "INSERT INTO adminLaundry (id_user, username, password) VALUES (?, ?, ?)";
+    try (PreparedStatement stmt = db.conn.prepareStatement(sql)) {
+        stmt.setString(1, id);
+        stmt.setString(2, username);
+        stmt.setString(3, password);
+        int rowsInserted = stmt.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("A new user has been inserted into the database.");
+        } else {
+            System.out.println("No new user has been inserted into the database.");
+        }
+    } catch (SQLException ex) {
+        System.out.println("An error occurred while inserting the new user: " + ex.getMessage());
+    }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -13,16 +13,18 @@ import java.util.logging.Logger;
  * @author Haikal
  */
 public class DBConnection {
-    private Connection conn;
     
-    private final String url = "jdbc:oracle:thin:@localhost:1521:flxnzz";
-    private final String username = "system";
-    private final String password = "Fluxion47";
+    
+    private final String url = "jdbc:mysql://128.199.77.50:3306/tubesPbo";
+    private final String username = "flxnzz";
+    private final String password = "humanDecoded1337_";
+    public Connection conn;
     
     public void connect() {
         try{
             conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected to database");
+            
         } catch(SQLException se) {
             System.out.println("Connection to database error! "+se);
         }
