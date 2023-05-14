@@ -13,14 +13,12 @@ import java.util.logging.Logger;
  * @author Haikal
  */
 public class DBConnection {
+    private static final String url = "jdbc:mysql://128.199.77.50:3306/tubesPbo";
+    private static final String username = "flxnzz";
+    private static final String password = "humanDecoded1337_";
+    public static Connection conn;
     
-    
-    private final String url = "jdbc:mysql://128.199.77.50:3306/tubesPbo";
-    private final String username = "flxnzz";
-    private final String password = "humanDecoded1337_";
-    public Connection conn;
-    
-    public void connect() {
+    public static void connect() {
         try{
             conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected to database");
@@ -29,7 +27,6 @@ public class DBConnection {
             System.out.println("Connection to database error! "+se);
         }
     }
-    
 }
 
 

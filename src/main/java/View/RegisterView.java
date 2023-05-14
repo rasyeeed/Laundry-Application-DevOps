@@ -8,6 +8,8 @@ import java.sql.Connection;
 import Model.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +18,7 @@ import java.sql.SQLException;
 public class RegisterView extends javax.swing.JFrame {
     public static String usernameField;
     public static String passwordField;
+    
 
     /**
      * Creates new form LoginView
@@ -270,26 +273,28 @@ public class RegisterView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Get the values from the input fields
-    String id = jTextField1.getText();
-    String username = jTextField1.getText();
-    String password = jPasswordField1.getText();
-
-    DBConnection db = new DBConnection();
-    db.connect();
-    String sql = "INSERT INTO adminLaundry (id_user, username, password) VALUES (?, ?, ?)";
-    try (PreparedStatement stmt = db.conn.prepareStatement(sql)) {
-        stmt.setString(1, id);
-        stmt.setString(2, username);
-        stmt.setString(3, password);
-        int rowsInserted = stmt.executeUpdate();
-        if (rowsInserted > 0) {
-            System.out.println("A new user has been inserted into the database.");
-        } else {
-            System.out.println("No new user has been inserted into the database.");
+        String username = jTextField1.getText();
+        var password = jPasswordField1.getPassword();
+        DBConnection.connect();
+        String sql = "INSERT INTO users (ID, User, Password) VALUES (?, ?, ?)";
+        Random random = new Random();
+        String id = String .valueOf(random.nextInt(90000000) + 10000000);
+        try (PreparedStatement stmt = DBConnection.conn.prepareStatement(sql)) {
+            stmt.setString(1, id);
+            stmt.setString(2, username);
+            stmt.setString(3, new String(password));
+            int rowsInserted = stmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new user has been inserted into the database.");
+                this.setVisible(false);
+                new HomeView().setVisible(true);
+            } else {
+                System.out.println("No new user has been inserted into the database.");
+            }
+        } catch (SQLException ex) {
+            
+            System.out.println("An error occurred while inserting the new user: " + ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println("An error occurred while inserting the new user: " + ex.getMessage());
-    }
     
     }//GEN-LAST:event_jButton2ActionPerformed
 

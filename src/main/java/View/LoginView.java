@@ -5,6 +5,11 @@
 package View;
 
 import Model.DBConnection;
+import static Model.DBConnection.conn;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +26,6 @@ public class LoginView extends javax.swing.JFrame {
     DBConnection koneksi;
     public LoginView() {
         initComponents();
-        koneksi = new DBConnection();
-        koneksi.connect();
     }
 
     /**
@@ -252,12 +255,23 @@ public class LoginView extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        if (!(jTextField1.getText().isEmpty()) || !(jPasswordField1.getText().isEmpty())){
-            this.hide();
-            new PesananView().setVisible(true);
-            
-        }else{
-            JOptionPane.showMessageDialog(this, "Silahkan cek kembali username dan password anda.", "Akun tidak valid", JOptionPane.INFORMATION_MESSAGE);
+        String username = jTextField1.getText();
+        var password = jPasswordField1.getPassword();
+        DBConnection.connect();
+        
+        String sql = "SELECT * FROM users WHERE User = ? AND Password = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            stmt.setString(2, new String(password));
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                this.setVisible(false);
+                new HomeView().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid username or password.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            System.out.println("An error occurred while checking the user credentials: " + ex.getMessage());
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
