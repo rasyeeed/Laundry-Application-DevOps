@@ -6,16 +6,14 @@ package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Haikal
  */
 public class DBConnection {
-    private static final String url = "jdbc:mysql://128.199.77.50:3306/tubesPbo";
-    private static final String username = "flxnzz";
-    private static final String password = "humanDecoded1337_";
+    private static final String url = "jdbc:mysql://178.128.215.35:3306/Laundry";
+    private static final String username = "Flxnzz";
+    private static final String password = "Humanzz1337!";
     public static Connection conn;
     
     public static void connect() {
@@ -23,8 +21,10 @@ public class DBConnection {
             conn = DriverManager.getConnection(url,username,password);
             System.out.println("Connected to database");
             
-        } catch(SQLException se) {
-            System.out.println("Connection to database error! "+se);
+        } catch(SQLException ex) {
+            System.out.println("Connection to database error! "+ ex);
+        } catch (Exception ex){
+            System.out.println("NO responses from server");
         }
     }
 }

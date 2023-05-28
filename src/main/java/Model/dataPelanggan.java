@@ -5,15 +5,10 @@
 package Model;
 
 import static Model.DBConnection.conn;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import View.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 /**
  *
  * @author flxnzz
@@ -21,24 +16,25 @@ import java.awt.event.ActionListener;
 public class dataPelanggan {
     private PreparedStatement statement;
     private ResultSet resultSet;
-    private DefaultTableModel model;
-    private javax.swing.JTable table;
+    private final DefaultTableModel model;
+    private final javax.swing.JTable table;
+    private String sql;
     
     public dataPelanggan(javax.swing.JTable jTable){
         table = jTable;
-        model = new DefaultTableModel(new String[]{
+        model = new DefaultTableModel(new String[]
+        {
             "ID", "Nama", "Alamat", "Kontak", "Berat/Jml Cucian", "Jenis Layanan", "Jenis Cucian"
-            }, 0);
+        }, 0);
         
         jTable.setModel(model);
     }
-    public void showData(){
+    
+    public void addData(String sql, PreparedStatement statement){
         try {
             DBConnection.connect();
 
             // Retrieve the data
-            String sql = "SELECT * FROM detailPelanggan";
-            statement = conn.prepareStatement(sql);
             resultSet = statement.executeQuery();
 
             // Add the data to the DefaultTableModel
@@ -58,4 +54,36 @@ public class dataPelanggan {
         }
     }
     
+    public void showData(){
+        try { 
+            sql = "SELECT * FROM dataPelanggan";
+            statement = conn.prepareStatement(sql);
+            addData(sql, statement);
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving data: " + ex.getMessage());
+        }
+    }
+    
+    // Inner Class
+    public class Search {
+        javax.swing.JTextField searchField;
+        
+        public Search(javax.swing.JTextField searchField){
+            this.searchField = searchField;
+        }
+        
+        public void searchData() {
+            String searchQuery = searchField.getText();
+            model.setNumRows(0); // clear table
+            
+            try {
+                sql = "SELECT * FROM dataPelanggan WHERE name LIKE ?";
+                statement = conn.prepareStatement(sql);
+                statement.setString(1, "%" + searchQuery + "%");
+                addData(sql, statement);
+            } catch (SQLException ex) {
+                System.out.println("Error executing search query: " + ex.getMessage());
+            }
+        }
+    }
 }

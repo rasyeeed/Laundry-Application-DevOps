@@ -4,6 +4,7 @@
 
 package Controller;
 
+import Model.DBConnection;
 import View.LoginView;
 import View.RegisterView;
 
@@ -13,7 +14,7 @@ import View.RegisterView;
  */
 public class Driver {
 
-    public static void main(String[] args) {        
+    public static void main(String[] args) { 
         LoginView login = new LoginView();
         login.setVisible(true);
     }

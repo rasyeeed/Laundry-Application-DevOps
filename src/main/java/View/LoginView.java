@@ -6,6 +6,7 @@ package View;
 
 import Model.DBConnection;
 import static Model.DBConnection.conn;
+import Model.LoginModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -257,22 +258,8 @@ public class LoginView extends javax.swing.JFrame {
         
         String username = jTextField1.getText();
         var password = jPasswordField1.getPassword();
-        DBConnection.connect();
-        
-        String sql = "SELECT * FROM users WHERE User = ? AND Password = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
-            stmt.setString(2, new String(password));
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                this.setVisible(false);
-                new HomeView().setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid username or password.", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            System.out.println("An error occurred while checking the user credentials: " + ex.getMessage());
-        }
+        LoginModel creds = new LoginModel(username, password);
+        creds.login(this);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
