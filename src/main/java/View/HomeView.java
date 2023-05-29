@@ -6,17 +6,8 @@ package View;
 
 import Model.DBConnection;
 import static Model.DBConnection.conn;
-import Model.SearchModel;
-import java.awt.Dimension;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import Model.dataPelanggan;
+import Model.*;
+
 
 /**
  *
@@ -471,12 +462,12 @@ public class HomeView extends javax.swing.JFrame {
             TransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TransaksiLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(TransaksiLayout.createSequentialGroup()
+                .addGap(384, 384, 384)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(265, 265, 265))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TransaksiLayout.setVerticalGroup(
             TransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +475,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -588,41 +579,15 @@ public class HomeView extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
             // 1. Create a database connection
-        Connection connection = null;
-        PreparedStatement statement = null;
-        try {
-            DBConnection.connect();
-            // 2. Prepare the SQL statement
-            String sql = "INSERT INTO dataPelanggan (name, address, contact, laundry_weight, service_type, laundry_type) VALUES (?, ?, ?, ?, ?, ?)";
-            statement = conn.prepareStatement(sql);
-
-            // 3. Set the parameter values
-            statement.setString(1, namaTextField1.getText());
-            statement.setString(2, alamatTextField.getText());
-            statement.setString(3, kontakTextField.getText());
-            statement.setDouble(4, Double.parseDouble(jumlahCucianField.getText()));
-            statement.setString(5, jLayananCombo.getSelectedItem().toString());
-            statement.setString(6, jCucianCombo.getSelectedItem().toString());
-
-            // 4. Execute the SQL statement
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                JOptionPane.showMessageDialog(this, "Data inserted successfully!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error inserting data: " + ex.getMessage());
-        } finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Error closing connection: " + ex.getMessage());
-            }
-        }
+        AddCustomer customer = new AddCustomer(
+                namaTextField1.getText(),
+                alamatTextField.getText(),
+                kontakTextField.getText(), 
+                Double.parseDouble(jumlahCucianField.getText()), 
+                jLayananCombo.getSelectedItem().toString(), 
+                jCucianCombo.getSelectedItem().toString()
+        );
+        customer.addData(this);
 
     }//GEN-LAST:event_submitButtonActionPerformed
 
