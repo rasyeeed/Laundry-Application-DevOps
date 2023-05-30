@@ -7,19 +7,37 @@ package Model;
 import static Model.DBConnection.conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author flxnzz
  */
-public class AddCustomer {
+public class AddCustomer extends AddDataToTable{
     private String nama, alamat, kontak, layanan, jCucian;
     private double jmlCucian;
+    private javax.swing.JTable table;
+    private DefaultTableModel model;
+    private ResultSet rs;
+    
+    public AddCustomer(javax.swing.JTable jTable){
+        this.table = getTable();
+        rs = getResultSet();
+        
+        table = jTable;
+        model = new DefaultTableModel(new String[]
+        {
+            "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran"
+        }, 0);
+        
+        jTable.setModel(model);
+    }
     public AddCustomer(String nama, String alamat, String kontak, double jmlCucian, String layanan, String jCucian){
         this.nama = nama;
         this.alamat = alamat;
@@ -29,7 +47,7 @@ public class AddCustomer {
         this.jCucian = jCucian;
     }
     
-    public void addData(javax.swing.JFrame frame){
+    public void insertData(javax.swing.JFrame frame){
         Connection connection = null;
         PreparedStatement statement = null;
         PreparedStatement statement2 = null;
@@ -78,4 +96,39 @@ public class AddCustomer {
             }
         }
     }
+
+    @Override
+    public void addToTable(String sql, PreparedStatement statement) {
+        try {
+            DBConnection.connect();
+
+            // Retrieve the data
+            rs = statement.executeQuery();
+
+            // Add the data to the DefaultTableModel
+            while (rs.next()) {
+                Object[] row = new Object[7];
+                row[0] = rs.getInt("ID");
+                row[1] = rs.getString("nama");
+                row[2] = rs.getString("jadwalKirim");
+                row[3] = rs.getString("statusBayar");
+                row[4] = rs.getDouble("cost");
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving data: " + ex.getMessage());
+        }
+    }
+    
+    @Override
+    public void showData() {
+        try { 
+            String sql = "SELECT * FROM transaksi";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            addToTable(sql, statement);
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving data: " + ex.getMessage());
+        }
+    }
+
 }

@@ -13,41 +13,48 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author flxnzz
  */
-public class dataPelanggan {
+public class dataPelanggan extends AddDataToTable{
     private PreparedStatement statement;
-    private ResultSet resultSet;
-    private final DefaultTableModel model;
-    private final javax.swing.JTable table;
+    private final ResultSet rs;
+    private DefaultTableModel Model;
+    private javax.swing.JTable table;
     private String sql;
     
     public dataPelanggan(javax.swing.JTable jTable){
+        rs = getResultSet();
+        this.Model = getModel();
+        this.table = getTable();
+        
         table = jTable;
-        model = new DefaultTableModel(new String[]
+        Model = new DefaultTableModel(new String[]
         {
             "ID", "Nama", "Alamat", "Kontak", "Berat/Jml Cucian", "Jenis Layanan", "Jenis Cucian"
         }, 0);
         
-        jTable.setModel(model);
+        jTable.setModel(Model);
     }
     
-    public void addData(String sql, PreparedStatement statement){
+    // Nambah data pelanggan ke tabel
+    @Override
+    public void addToTable(String sql, PreparedStatement statement){
         try {
             DBConnection.connect();
 
             // Retrieve the data
-            resultSet = statement.executeQuery();
+            ResultSet rs = getResultSet();
+            rs = statement.executeQuery();
 
             // Add the data to the DefaultTableModel
-            while (resultSet.next()) {
+            while (rs.next()) {
                 Object[] row = new Object[7];
-                row[0] = resultSet.getInt("ID");
-                row[1] = resultSet.getString("name");
-                row[2] = resultSet.getString("address");
-                row[3] = resultSet.getString("contact");
-                row[4] = resultSet.getDouble("laundry_weight");
-                row[5] = resultSet.getString("service_type");
-                row[6] = resultSet.getString("laundry_type");
-                model.addRow(row);
+                row[0] = rs.getInt("ID");
+                row[1] = rs.getString("name");
+                row[2] = rs.getString("address");
+                row[3] = rs.getString("contact");
+                row[4] = rs.getDouble("laundry_weight");
+                row[5] = rs.getString("service_type");
+                row[6] = rs.getString("laundry_type");
+                Model.addRow(row);
             }
         } catch (SQLException ex) {
             System.out.println("Error retrieving data: " + ex.getMessage());
@@ -58,11 +65,12 @@ public class dataPelanggan {
         try { 
             sql = "SELECT * FROM dataPelanggan";
             statement = conn.prepareStatement(sql);
-            addData(sql, statement);
+            addToTable(sql, statement);
         } catch (SQLException ex) {
             System.out.println("Error retrieving data: " + ex.getMessage());
         }
     }
+
     
     // Inner Class
     public class Search {
@@ -74,13 +82,13 @@ public class dataPelanggan {
         
         public void searchData() {
             String searchQuery = searchField.getText();
-            model.setNumRows(0); // clear table
+            Model.setNumRows(0); // clear table
             
             try {
                 sql = "SELECT * FROM dataPelanggan WHERE name LIKE ?";
                 statement = conn.prepareStatement(sql);
                 statement.setString(1, "%" + searchQuery + "%");
-                addData(sql, statement);
+                addToTable(sql, statement);
             } catch (SQLException ex) {
                 System.out.println("Error executing search query: " + ex.getMessage());
             }
