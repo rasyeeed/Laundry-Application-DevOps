@@ -47,18 +47,18 @@ public class AddCustomer extends AddDataToTable{
         this.jCucian = jCucian;
     }
     
+    public String getNama(){
+        return this.nama;
+    }
+    
     public void insertData(javax.swing.JFrame frame){
         Connection connection = null;
         PreparedStatement statement = null;
-        PreparedStatement statement2 = null;
         try {
             DBConnection.connect();
             // 2. Prepare the SQL statement
             String sql = "INSERT INTO dataPelanggan (name, address, contact, laundry_weight, service_type, laundry_type) VALUES (?, ?, ?, ?, ?, ?)";
-            String sql2 = "INSERT INTO transaksi (nama, waktuPesan, jadwalKirim, statusBayar)"
-                    + " VALUES (?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
-            statement2 = conn.prepareStatement(sql2);
 
             // 3. Set the parameter values
             statement.setString(1, nama);
@@ -67,26 +67,19 @@ public class AddCustomer extends AddDataToTable{
             statement.setDouble(4, jmlCucian);
             statement.setString(5, layanan);
             statement.setString(6, jCucian);
-            
-            statement2.setString(1, nama);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("nl"));
-            statement2.setString(2, LocalDateTime.now().format(formatter));
-            statement2.setString(3, LocalDateTime.now().plusDays(2).format(formatter));
-            statement2.setString(4, "Sudah bayar");
-
+            AddTransaction transaksi = new AddTransaction(this.nama, this.alamat, this.kontak, this.jmlCucian, this.layanan, this.jCucian);
+            transaksi.insertTransaksi(frame);
             // 4. Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
-            int rows2 = statement2.executeUpdate();
-            if (rowsInserted > 0 && rows2 > 0) {
+            if (rowsInserted > 0) {
                 JOptionPane.showMessageDialog(frame, "Data inserted successfully!");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(frame, "Error inserting data: " + ex.getMessage());
         } finally {
             try {
-                if (statement != null && statement2 != null) {
+                if (statement != null) {
                     statement.close();
-                    statement2.close();
                 }
                 if (connection != null) {
                     connection.close();
