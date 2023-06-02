@@ -76,6 +76,7 @@ public class HomeView extends javax.swing.JFrame {
         jLayananCombo = new javax.swing.JComboBox<>();
         jCucianCombo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         Pelanggan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -278,14 +279,14 @@ public class HomeView extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Jenis Layanan");
 
-        jLayananCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Express", "Kilat" }));
+        jLayananCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jenis Layanan", "Regular", "Express", "Kilat" }));
         jLayananCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLayananComboActionPerformed(evt);
             }
         });
 
-        jCucianCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kiloan", "Satuan" }));
+        jCucianCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jenis Paket Cucian", "Kiloan", "Satuan" }));
         jCucianCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCucianComboActionPerformed(evt);
@@ -329,28 +330,39 @@ public class HomeView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Cek Harga");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addPelangganLayout = new javax.swing.GroupLayout(addPelanggan);
         addPelanggan.setLayout(addPelangganLayout);
         addPelangganLayout.setHorizontalGroup(
             addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addPelangganLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPelangganLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addPelangganLayout.createSequentialGroup()
-                        .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dataPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(namaLabel4)
-                            .addComponent(namaLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                        .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(addPelangganLayout.createSequentialGroup()
                 .addGap(317, 317, 317)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(addPelangganLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addPelangganLayout.createSequentialGroup()
+                        .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dataPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaLabel1)
+                            .addGroup(addPelangganLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1)
+                                    .addComponent(namaLabel4))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPelangganLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         addPelangganLayout.setVerticalGroup(
             addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,11 +372,13 @@ public class HomeView extends javax.swing.JFrame {
                 .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dataPelangganPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(57, 57, 57)
+                .addGap(22, 22, 22)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(namaLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(namaLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -580,10 +594,36 @@ public class HomeView extends javax.swing.JFrame {
 
     private void jLayananComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLayananComboActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jLayananComboActionPerformed
 
+    private int hargaCucian;
     private void jCucianComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCucianComboActionPerformed
         // TODO add your handling code here:
+        if(jCucianCombo.getSelectedItem()=="Kiloan"){
+            if(jLayananCombo.getSelectedItem() == "Regular"){
+                hargaCucian = 6000;
+            }else if(jLayananCombo.getSelectedItem() == "Express"){
+                hargaCucian = 10000;
+            }else if (jLayananCombo.getSelectedItem() == "Kilat"){
+                hargaCucian = 12000;
+            }else{
+                hargaCucian = 0;
+            }
+            
+        }else if(jCucianCombo.getSelectedItem() == "Satuan"){
+            if(jLayananCombo.getSelectedItem() == "Regular"){
+                hargaCucian = 5000;
+            }else if(jLayananCombo.getSelectedItem() == "Express"){
+                hargaCucian = 7000;
+            }else if (jLayananCombo.getSelectedItem() == "Kilat"){
+                hargaCucian = 9000;
+            }else{
+                hargaCucian = 0;
+            }
+        }
+        
+        
     }//GEN-LAST:event_jCucianComboActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
@@ -647,6 +687,13 @@ public class HomeView extends javax.swing.JFrame {
         search.searchData();*/
     }//GEN-LAST:event_searchBtnActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int berat = Integer.parseInt(jumlahCucianField.getText());
+        int Jumlah = hargaCucian*berat;
+        namaLabel1.setText(String.valueOf(Jumlah));
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -679,6 +726,7 @@ public class HomeView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HomeView().setVisible(true);
             }
@@ -698,6 +746,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JTextField alamatTextField;
     private javax.swing.JPanel dataPelangganPanel;
     private javax.swing.JPanel dataTransaksiPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCucianCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
