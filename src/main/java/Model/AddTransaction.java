@@ -18,9 +18,10 @@ import javax.swing.JOptionPane;
  * @author flxnzz
  */
 public class AddTransaction extends AddCustomer {
-
-    public AddTransaction(String nama, String alamat, String kontak, double jmlCucian, String layanan, String jCucian) {
-        super(nama, alamat, kontak, jmlCucian, layanan, jCucian);
+    private Customer pelanggan;
+    public AddTransaction(Customer pelanggan) {
+        super(pelanggan);
+        this.pelanggan = pelanggan;
     }
     
     public void insertTransaksi(javax.swing.JFrame frame){
@@ -33,7 +34,7 @@ public class AddTransaction extends AddCustomer {
                     + " VALUES (?, ?, ?, ?)";
             statement = conn.prepareStatement(query);
             
-            statement.setString(1, getNama());
+            statement.setString(1, pelanggan.getNama());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("nl"));
             statement.setString(2, LocalDateTime.now().format(formatter));
             statement.setString(3, LocalDateTime.now().plusDays(2).format(formatter));

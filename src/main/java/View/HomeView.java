@@ -5,6 +5,7 @@
 package View;
 
 import Model.*;
+import Controller.MenuController;
 
 
 /**
@@ -12,25 +13,14 @@ import Model.*;
  * @author Haikal
  */
 public class HomeView extends javax.swing.JFrame {
-    /**
-     * Creates new form HomeView
-     */
+    private MenuController menu;
     public HomeView() {
         initComponents();
-        
-        prepareMenuBar(addPelanggan);
+        menu = new MenuController(Contains);
+        menu.prepareMenuBar(addPelanggan);
     }
     
-    public void prepareMenuBar(javax.swing.JPanel panel){
-        Contains.removeAll();
-        Contains.repaint();
-        Contains.revalidate();
-        
-        // Menambahkan panel
-        Contains.add(panel);
-        Contains.repaint();
-        Contains.revalidate();
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,12 +55,14 @@ public class HomeView extends javax.swing.JFrame {
         jLayananCombo = new javax.swing.JComboBox<>();
         jCucianCombo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        cekHargaButton = new javax.swing.JButton();
         Pelanggan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         searchField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
+        cetakPelangganBtn = new javax.swing.JButton();
         Transaksi = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -318,28 +310,48 @@ public class HomeView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        cekHargaButton.setBackground(new java.awt.Color(0, 204, 204));
+        cekHargaButton.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        cekHargaButton.setForeground(new java.awt.Color(255, 255, 255));
+        cekHargaButton.setText("Cek Harga");
+        cekHargaButton.setBorder(null);
+        cekHargaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cekHargaButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        cekHargaButton.setFocusable(false);
+        cekHargaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cekHargaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekHargaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addPelangganLayout = new javax.swing.GroupLayout(addPelanggan);
         addPelanggan.setLayout(addPelangganLayout);
         addPelangganLayout.setHorizontalGroup(
             addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addPelangganLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPelangganLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addPelangganLayout.createSequentialGroup()
-                        .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dataPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(namaLabel4)
-                            .addComponent(namaLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                        .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(dataPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addPelangganLayout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(addPelangganLayout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addComponent(jLabel1)
+                .addGap(22, 22, 22)
+                .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(namaLabel1)
+                    .addComponent(namaLabel4)
+                    .addComponent(cekHargaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPelangganLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         addPelangganLayout.setVerticalGroup(
             addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,13 +361,15 @@ public class HomeView extends javax.swing.JFrame {
                 .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dataTransaksiPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dataPelangganPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(57, 57, 57)
+                .addGap(47, 47, 47)
+                .addComponent(cekHargaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(namaLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(namaLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
@@ -401,23 +415,34 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
+        cetakPelangganBtn.setText("jButton1");
+        cetakPelangganBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakPelangganBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PelangganLayout = new javax.swing.GroupLayout(Pelanggan);
         Pelanggan.setLayout(PelangganLayout);
         PelangganLayout.setHorizontalGroup(
             PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PelangganLayout.createSequentialGroup()
-                .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(PelangganLayout.createSequentialGroup()
+                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchBtn))
+                        .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PelangganLayout.createSequentialGroup()
+                                .addGap(320, 320, 320)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PelangganLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PelangganLayout.createSequentialGroup()
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn))
-                    .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PelangganLayout.createSequentialGroup()
-                            .addGap(320, 320, 320)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(PelangganLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(340, 340, 340)
+                        .addComponent(cetakPelangganBtn)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         PelangganLayout.setVerticalGroup(
@@ -430,7 +455,9 @@ public class HomeView extends javax.swing.JFrame {
                     .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cetakPelangganBtn)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         Transaksi.setPreferredSize(new java.awt.Dimension(715, 511));
@@ -537,7 +564,7 @@ public class HomeView extends javax.swing.JFrame {
 
     private void addPelangganBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPelangganBtnActionPerformed
         // TODO add your handling code here:
-        prepareMenuBar(addPelanggan);
+        menu.prepareMenuBar(addPelanggan);
     }//GEN-LAST:event_addPelangganBtnActionPerformed
 
     private void PelangganBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PelangganBtnActionPerformed
@@ -545,14 +572,14 @@ public class HomeView extends javax.swing.JFrame {
         
         
         // Menambahkan panel
-        dataPelanggan customer = new dataPelanggan(jTable1);
+        ShowCustomer customer = new ShowCustomer(jTable1);
         customer.showData();
-        prepareMenuBar(Pelanggan);
+        menu.prepareMenuBar(Pelanggan);
     }//GEN-LAST:event_PelangganBtnActionPerformed
 
     private void TransaksiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransaksiBtnActionPerformed
         // TODO add your handling code here:
-        prepareMenuBar(Transaksi);
+        menu.prepareMenuBar(Transaksi);
         AddCustomer customer = new AddCustomer(jTable3);
         customer.showData();
     }//GEN-LAST:event_TransaksiBtnActionPerformed
@@ -579,7 +606,7 @@ public class HomeView extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
             // 1. Create a database connection
-        AddCustomer customer = new AddCustomer(
+        Customer customer = new Customer(
                 namaTextField1.getText(),
                 alamatTextField.getText(),
                 kontakTextField.getText(), 
@@ -587,7 +614,8 @@ public class HomeView extends javax.swing.JFrame {
                 jLayananCombo.getSelectedItem().toString(), 
                 jCucianCombo.getSelectedItem().toString()
         );
-        customer.insertData(this);
+        AddCustomer newCustomer = new AddCustomer(customer);
+        newCustomer.insertData(this);
 
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -605,12 +633,24 @@ public class HomeView extends javax.swing.JFrame {
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
-        dataPelanggan customer = new dataPelanggan(jTable1); 
-        dataPelanggan.Search searching = customer.new Search(searchField);
+        ShowCustomer customer = new ShowCustomer(jTable1); 
+        ShowCustomer.Search searching = customer.new Search(searchField);
         searching.searchData();
         /*SearchModel search = new SearchModel(jTable1, searchField);
         search.searchData();*/
     }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void cekHargaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekHargaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cekHargaButtonActionPerformed
+
+    private void cetakPelangganBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakPelangganBtnActionPerformed
+        // TODO add your handling code here:
+        ShowCustomer customer = new ShowCustomer();
+        CetakLaporan report = new CetakLaporan(customer.getCustomerList());
+        report.DownloadAsTxt();
+        //ShowCustomer.DownloadAsTxt();
+    }//GEN-LAST:event_cetakPelangganBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contains;
@@ -623,6 +663,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel addPelanggan;
     private javax.swing.JButton addPelangganBtn;
     private javax.swing.JTextField alamatTextField;
+    private javax.swing.JButton cekHargaButton;
+    private javax.swing.JButton cetakPelangganBtn;
     private javax.swing.JPanel dataPelangganPanel;
     private javax.swing.JPanel dataTransaksiPanel;
     private javax.swing.JComboBox<String> jCucianCombo;

@@ -8,19 +8,25 @@ import static Model.DBConnection.conn;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author flxnzz
  */
-public class dataPelanggan extends AddDataToTable{
+public class ShowCustomer extends AddDataToTable{
     private PreparedStatement statement;
-    private final ResultSet rs;
+    private ResultSet rs;
     private DefaultTableModel Model;
     private javax.swing.JTable table;
     private String sql;
+    private static final ArrayList<Customer> customerList = new ArrayList<>();
     
-    public dataPelanggan(javax.swing.JTable jTable){
+    public ArrayList<Customer> getCustomerList(){
+        return this.customerList;
+    }
+    
+    public ShowCustomer(javax.swing.JTable jTable){
         rs = getResultSet();
         this.Model = getModel();
         this.table = getTable();
@@ -34,7 +40,11 @@ public class dataPelanggan extends AddDataToTable{
         jTable.setModel(Model);
     }
     
-    // Nambah data pelanggan ke tabel
+    public ShowCustomer(){
+        
+    }
+    
+    // Nambah data pelanggan ke tabel untuk ditampilkan ke layar
     @Override
     public void addToTable(String sql, PreparedStatement statement){
         try {
@@ -55,7 +65,16 @@ public class dataPelanggan extends AddDataToTable{
                 row[5] = rs.getString("service_type");
                 row[6] = rs.getString("laundry_type");
                 Model.addRow(row);
+                customerList.add(new Customer(rs.getString("name"), 
+                        rs.getString("address"),
+                        rs.getString("contact"),
+                        rs.getDouble("laundry_weight"), 
+                        rs.getString("service_type"),
+                        rs.getString("laundry_type"))
+                );
             }
+            rs.close();
+            statement.close();
         } catch (SQLException ex) {
             System.out.println("Error retrieving data: " + ex.getMessage());
         }
@@ -66,6 +85,8 @@ public class dataPelanggan extends AddDataToTable{
             sql = "SELECT * FROM dataPelanggan";
             statement = conn.prepareStatement(sql);
             addToTable(sql, statement);
+            System.out.println(customerList.size());
+            System.out.println(customerList.get(0).getNama());
         } catch (SQLException ex) {
             System.out.println("Error retrieving data: " + ex.getMessage());
         }

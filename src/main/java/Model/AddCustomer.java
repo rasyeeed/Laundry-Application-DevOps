@@ -9,9 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,17 +17,14 @@ import javax.swing.table.DefaultTableModel;
  * @author flxnzz
  */
 public class AddCustomer extends AddDataToTable{
-    private String nama, alamat, kontak, layanan, jCucian;
+    private Customer pelanggan;
     private double jmlCucian;
     private javax.swing.JTable table;
     private DefaultTableModel model;
     private ResultSet rs;
     
     public AddCustomer(javax.swing.JTable jTable){
-        this.table = getTable();
         rs = getResultSet();
-        
-        table = jTable;
         model = new DefaultTableModel(new String[]
         {
             "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran"
@@ -38,18 +32,10 @@ public class AddCustomer extends AddDataToTable{
         
         jTable.setModel(model);
     }
-    public AddCustomer(String nama, String alamat, String kontak, double jmlCucian, String layanan, String jCucian){
-        this.nama = nama;
-        this.alamat = alamat;
-        this.kontak = kontak;
-        this.jmlCucian = jmlCucian;
-        this.layanan = layanan;
-        this.jCucian = jCucian;
+    public AddCustomer(Customer pelanggan){
+        this.pelanggan = pelanggan;
     }
     
-    public String getNama(){
-        return this.nama;
-    }
     
     public void insertData(javax.swing.JFrame frame){
         Connection connection = null;
@@ -61,13 +47,13 @@ public class AddCustomer extends AddDataToTable{
             statement = conn.prepareStatement(sql);
 
             // 3. Set the parameter values
-            statement.setString(1, nama);
-            statement.setString(2, alamat);
-            statement.setString(3, kontak);
-            statement.setDouble(4, jmlCucian);
-            statement.setString(5, layanan);
-            statement.setString(6, jCucian);
-            AddTransaction transaksi = new AddTransaction(this.nama, this.alamat, this.kontak, this.jmlCucian, this.layanan, this.jCucian);
+            statement.setString(1, pelanggan.getNama());
+            statement.setString(2, pelanggan.getAlamat());
+            statement.setString(3, pelanggan.getKontak());
+            statement.setDouble(4, pelanggan.getJumlahCucian());
+            statement.setString(5, pelanggan.getJenisLayanan());
+            statement.setString(6, pelanggan.getJenisCucian());
+            AddTransaction transaksi = new AddTransaction(this.pelanggan);
             transaksi.insertTransaksi(frame);
             // 4. Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
@@ -114,6 +100,7 @@ public class AddCustomer extends AddDataToTable{
     }
     
     @Override
+    // Tampilkan data transaksi
     public void showData() {
         try { 
             String sql = "SELECT * FROM transaksi";

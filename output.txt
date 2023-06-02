@@ -1,0 +1,74 @@
+Laporan Laundry pada tanggal: 2 juni 2023
+-----------------------------------
+-----  Informasi Pelanggan 1 -----
+Nama pelanggan	: vidya
+Alamat		: sukapura
+Kontak		: 000044
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 2 -----
+Nama pelanggan	: Haikal
+Alamat		: Banten
+Kontak		: 08129389283
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 3 -----
+Nama pelanggan	: vidya ananda
+Alamat		: sukapura
+Kontak		: 0899965567
+Jumlah Cucian	: 4.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 4 -----
+Nama pelanggan	: tono
+Alamat		: sukabirus
+Kontak		: 08866777
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Kilat
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 5 -----
+Nama pelanggan	: ananda
+Alamat		: sukabirus
+Kontak		: 089978890
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 6 -----
+Nama pelanggan	: ananda
+Alamat		: sukapura
+Kontak		: 08998899
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Express
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 7 -----
+Nama pelanggan	: ananda
+Alamat		: sukapura
+Kontak		: 0899889
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 8 -----
+Nama pelanggan	: ratma
+Alamat		: mengger
+Kontak		: 08999799
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Express
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 9 -----
+Nama pelanggan	: fadel
+Alamat		: sukapura
+Kontak		: 08999778
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Express
+Jenis Cucian	: Satuan
+

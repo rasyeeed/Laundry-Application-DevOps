@@ -1,7 +1,13 @@
 /home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/View/HomeView.java
-/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/DBConnection.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Controller/MenuController.java
 /home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Controller/Driver.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/LoginModel.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/DBConnection.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/Customer.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/ShowCustomer.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/CetakLaporan.java
 /home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/View/RegisterView.java
-/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/View/Navbar.java
-/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/dataPelanggan.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/AddDataToTable.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/AddTransaction.java
 /home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/View/LoginView.java
+/home/flxnzz/NetBeansProjects/Laundry-Application/src/main/java/Model/AddCustomer.java
