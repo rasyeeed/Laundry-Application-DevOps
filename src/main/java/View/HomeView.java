@@ -6,7 +6,11 @@ package View;
 
 import Model.DBConnection;
 import static Model.DBConnection.conn;
+import Model.Layanan;
+import Model.Layanan_Kiloan;
+import Model.Layanan_pcsan;
 import Model.SearchModel;
+import Model.Transaksi;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -600,34 +604,14 @@ public class HomeView extends javax.swing.JFrame {
     private int hargaCucian;
     private void jCucianComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCucianComboActionPerformed
         // TODO add your handling code here:
-        if(jCucianCombo.getSelectedItem()=="Kiloan"){
-            if(jLayananCombo.getSelectedItem() == "Regular"){
-                hargaCucian = 6000;
-            }else if(jLayananCombo.getSelectedItem() == "Express"){
-                hargaCucian = 10000;
-            }else if (jLayananCombo.getSelectedItem() == "Kilat"){
-                hargaCucian = 12000;
-            }else{
-                hargaCucian = 0;
-            }
-            
-        }else if(jCucianCombo.getSelectedItem() == "Satuan"){
-            if(jLayananCombo.getSelectedItem() == "Regular"){
-                hargaCucian = 5000;
-            }else if(jLayananCombo.getSelectedItem() == "Express"){
-                hargaCucian = 7000;
-            }else if (jLayananCombo.getSelectedItem() == "Kilat"){
-                hargaCucian = 9000;
-            }else{
-                hargaCucian = 0;
-            }
-        }
-        
         
     }//GEN-LAST:event_jCucianComboActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
             // 1. Create a database connection
+        String jumlahCucian = jumlahCucianField.getText();
+        Layanan_Kiloan layanan_kilo = new Layanan_Kiloan(jCucianCombo.getSelectedIndex(),jLayananCombo.getSelectedIndex(),Double.parseDouble(jumlahCucian));
+        Layanan_pcsan layanan_pcs = new Layanan_pcsan(jCucianCombo.getSelectedIndex(),jLayananCombo.getSelectedIndex(),Double.parseDouble(jumlahCucian));
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -647,7 +631,14 @@ public class HomeView extends javax.swing.JFrame {
             // 4. Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                JOptionPane.showMessageDialog(this, "Data inserted successfully!");
+                String layanan;
+                if(jCucianCombo.getSelectedItem() == "Satuan"){
+                    layanan = layanan_pcs.getPrintLayanan();
+                }else{
+                    
+                    layanan = layanan_kilo.getPrintLayanan();
+                }
+                JOptionPane.showMessageDialog(this, "Data Sudah Masuk! \n"+ layanan);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error inserting data: " + ex.getMessage());
@@ -689,9 +680,9 @@ public class HomeView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int berat = Integer.parseInt(jumlahCucianField.getText());
-        int Jumlah = hargaCucian*berat;
-        namaLabel1.setText(String.valueOf(Jumlah));
+        String jumlahCucian = jumlahCucianField.getText();
+        Transaksi transaksi = new Transaksi(jCucianCombo.getSelectedIndex(),jLayananCombo.getSelectedIndex(),Double.parseDouble(jumlahCucian));
+        namaLabel1.setText(String.valueOf(transaksi.getBiaya()));
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**

@@ -14,18 +14,17 @@ public class Layanan_Kiloan extends Layanan {
     }
     
 
-    public void printLayanan(){
-        if(super.getLayanan() == 1){
-             System.out.println("Layanan yang anda pilih adalah kiloan");
+    public String getPrintLayanan(){
+        if(super.getWaktu()==1) {
+             return "Paket cucian perkilo \n Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi";
+        }else if(super.getWaktu()==2){
+            return"Paket cucian perkilo \n Laundry anda akan selesai 6 jam lagi";
+        }else if(super.getWaktu()==3){
+            return "Paket cucian perkilo \n Laundry anda akan selesai 3 jam lagi";
         }else{
-            System.out.println("Opsi yang anda pilih tidak tersedia");
+           return "Pilihan tidak tersedia";
         }
         
-        switch (super.getWaktu()) {
-            case 1 -> System.out.println("Laundry anda akan selesai 3 jam lagi");
-            case 2 -> System.out.println("Laundry anda akan selesai 6 jam lagi");
-            case 3 -> System.out.println("Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi");
-            default -> System.out.println("Pilihan tidak tersedia");
-        }
+        
     }
 }
