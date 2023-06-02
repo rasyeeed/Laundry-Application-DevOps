@@ -20,11 +20,11 @@ public class Layanan_pcsan extends Layanan {
             System.out.println("Opsi yang anda pilih tidak tersedia");
         }
         
-        switch (super.getWaktu()) {
-            case 1 -> System.out.println("Laundry anda akan selesai 3 jam lagi");
-            case 2 -> System.out.println("Laundry anda akan selesai 6 jam lagi");
-            case 3 -> System.out.println("Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi");
-            default -> System.out.println("Pilihan tidak tersedia");
-        }
+//        switch (super.getWaktu()) {
+//            case 1 -> System.out.println("Laundry anda akan selesai 3 jam lagi");
+//            case 2 -> System.out.println("Laundry anda akan selesai 6 jam lagi");
+//            case 3 -> System.out.println("Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi");
+//            default -> System.out.println("Pilihan tidak tersedia");
+//        }
     }
 }
