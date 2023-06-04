@@ -24,21 +24,25 @@ public class AddTransaction extends AddCustomer {
         this.pelanggan = pelanggan;
     }
     
-    public void insertTransaksi(javax.swing.JFrame frame){
+    public AddTransaction(Customer pelanggan, Transaksi transaksi) {
+        super(pelanggan);
+        this.pelanggan = pelanggan;
+    }
+    
+    public void insertTransaksi(javax.swing.JFrame frame, double harga){
         Connection connection = null;
         PreparedStatement statement = null;
         try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("nl"));
             DBConnection.connect();
             // 2. Prepare the SQL statement
-            String query = "INSERT INTO transaksi (nama, waktuPesan, jadwalKirim, statusBayar)"
+            String query = "INSERT INTO transaksi (nama, waktuPesan, jadwalKirim, cost)"
                     + " VALUES (?, ?, ?, ?)";
             statement = conn.prepareStatement(query);
-            
             statement.setString(1, pelanggan.getNama());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("nl"));
             statement.setString(2, LocalDateTime.now().format(formatter));
             statement.setString(3, LocalDateTime.now().plusDays(2).format(formatter));
-            statement.setString(4, "Sudah bayar");
+            statement.setDouble(4, harga);
 
             // 4. Execute the SQL statement
             int rowsInserted = statement.executeUpdate();

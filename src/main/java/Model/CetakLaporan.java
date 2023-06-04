@@ -25,7 +25,7 @@ public class CetakLaporan{
         this.customerList = customerList;
     }
     
-    public void DownloadAsTxt(){
+    public void DownloadAsTxt(javax.swing.JFrame frame){
         
         String filePath = "output.txt";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("nl"));
@@ -43,9 +43,9 @@ public class CetakLaporan{
                 writer.println("Jenis Cucian\t: " + customerList.get(i).getJenisCucian() + "\n");               
             }
 
-            JOptionPane.showInputDialog("Text exported to " + filePath);
+            JOptionPane.showMessageDialog(frame, "Text exported to " + filePath);
         } catch (IOException e) {
-            JOptionPane.showInputDialog("An error occurred: " + e.getMessage());
+            JOptionPane.showMessageDialog(frame, "An error occurred: " + e.getMessage());
         }
     }
 }

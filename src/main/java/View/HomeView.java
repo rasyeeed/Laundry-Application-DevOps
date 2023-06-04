@@ -38,7 +38,7 @@ public class HomeView extends javax.swing.JFrame {
         Contains = new javax.swing.JPanel();
         addPelanggan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        namaLabel1 = new javax.swing.JLabel();
+        totalHargaValue = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         namaLabel4 = new javax.swing.JLabel();
         dataPelangganPanel = new javax.swing.JPanel();
@@ -155,9 +155,9 @@ public class HomeView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tambah Data Pelanggan");
 
-        namaLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
-        namaLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        namaLabel1.setText("{harga}");
+        totalHargaValue.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        totalHargaValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalHargaValue.setText("{harga}");
 
         submitButton.setBackground(new java.awt.Color(0, 204, 204));
         submitButton.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
@@ -344,7 +344,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(addPelangganLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(addPelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namaLabel1)
+                    .addComponent(totalHargaValue)
                     .addComponent(namaLabel4)
                     .addComponent(cekHargaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -366,7 +366,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(namaLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(namaLabel1)
+                .addComponent(totalHargaValue)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -415,7 +415,8 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
-        cetakPelangganBtn.setText("jButton1");
+        cetakPelangganBtn.setBackground(new java.awt.Color(0, 204, 204));
+        cetakPelangganBtn.setText("Cetak Laporan");
         cetakPelangganBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cetakPelangganBtnActionPerformed(evt);
@@ -427,22 +428,19 @@ public class HomeView extends javax.swing.JFrame {
         PelangganLayout.setHorizontalGroup(
             PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PelangganLayout.createSequentialGroup()
-                .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(PelangganLayout.createSequentialGroup()
-                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(searchBtn))
-                        .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PelangganLayout.createSequentialGroup()
-                                .addGap(320, 320, 320)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PelangganLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PelangganLayout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(cetakPelangganBtn)))
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn))
+                    .addGroup(PelangganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PelangganLayout.createSequentialGroup()
+                            .addGap(320, 320, 320)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PelangganLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cetakPelangganBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         PelangganLayout.setVerticalGroup(
@@ -455,9 +453,9 @@ public class HomeView extends javax.swing.JFrame {
                     .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cetakPelangganBtn)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cetakPelangganBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         Transaksi.setPreferredSize(new java.awt.Dimension(715, 511));
@@ -469,13 +467,13 @@ public class HomeView extends javax.swing.JFrame {
         jTable3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran"
+                "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran", "Total Harga"
             }
         ));
         jTable3.setRowHeight(40);
@@ -614,9 +612,13 @@ public class HomeView extends javax.swing.JFrame {
                 jLayananCombo.getSelectedItem().toString(), 
                 jCucianCombo.getSelectedItem().toString()
         );
+        String jumlahCucian = jumlahCucianField.getText();
+        Transaksi transaksi = new Transaksi(jCucianCombo.getSelectedItem().toString(),
+                jLayananCombo.getSelectedItem().toString(),
+                Double.parseDouble(jumlahCucian));
         AddCustomer newCustomer = new AddCustomer(customer);
-        newCustomer.insertData(this);
-
+        newCustomer.insertData(this, transaksi.getBiaya());
+        
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void kontakTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontakTextFieldActionPerformed
@@ -641,15 +643,18 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void cekHargaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekHargaButtonActionPerformed
-        // TODO add your handling code here:
+        String jumlahCucian = jumlahCucianField.getText();
+        Transaksi transaksi = new Transaksi(jCucianCombo.getSelectedItem().toString(),
+                jLayananCombo.getSelectedItem().toString(),
+                Double.parseDouble(jumlahCucian));
+        totalHargaValue.setText(String.valueOf(transaksi.getBiaya()));
     }//GEN-LAST:event_cekHargaButtonActionPerformed
 
     private void cetakPelangganBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakPelangganBtnActionPerformed
         // TODO add your handling code here:
         ShowCustomer customer = new ShowCustomer();
         CetakLaporan report = new CetakLaporan(customer.getCustomerList());
-        report.DownloadAsTxt();
-        //ShowCustomer.DownloadAsTxt();
+        report.DownloadAsTxt(this);
     }//GEN-LAST:event_cetakPelangganBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -683,13 +688,13 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JTextField jumlahCucianField;
     private javax.swing.JTextField kontakTextField;
     private javax.swing.JLabel namaLabel;
-    private javax.swing.JLabel namaLabel1;
     private javax.swing.JLabel namaLabel3;
     private javax.swing.JLabel namaLabel4;
     private javax.swing.JTextField namaTextField1;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton submitButton;
+    private javax.swing.JLabel totalHargaValue;
     // End of variables declaration//GEN-END:variables
 
     

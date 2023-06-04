@@ -16,14 +16,17 @@ public class Customer {
     private final double jmlCucian;
     private final String jLayanan; // Express | Kilat | Reguler
     private final String jCucian;  // Kiloan | Satuan
+    //private final double totalHarga;
     
-    public Customer(String nama, String alamat, String kontak, double jmlCucian, String jLayanan, String jCucian){
+    public Customer(String nama, String alamat, String kontak, double jmlCucian, 
+            String jLayanan, String jCucian){
         this.nama = nama;
         this.alamat = alamat;
         this.kontak = kontak;
         this.jmlCucian = jmlCucian;
         this.jLayanan = jLayanan;
         this.jCucian = jCucian;
+        //this.totalHarga = totalHarga;
     }
     
     public String getNama(){

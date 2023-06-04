@@ -27,7 +27,7 @@ public class AddCustomer extends AddDataToTable{
         rs = getResultSet();
         model = new DefaultTableModel(new String[]
         {
-            "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran"
+            "ID", "Nama", "Waktu Pesan","Jadwal Pengiriman", "Total Harga"
         }, 0);
         
         jTable.setModel(model);
@@ -37,7 +37,9 @@ public class AddCustomer extends AddDataToTable{
     }
     
     
-    public void insertData(javax.swing.JFrame frame){
+    public void insertData(javax.swing.JFrame frame, int harga){
+        Layanan_Kiloan layanan_kilo = new Layanan_Kiloan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
+        Layanan_pcsan layanan_pcs = new Layanan_pcsan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -54,11 +56,17 @@ public class AddCustomer extends AddDataToTable{
             statement.setString(5, pelanggan.getJenisLayanan());
             statement.setString(6, pelanggan.getJenisCucian());
             AddTransaction transaksi = new AddTransaction(this.pelanggan);
-            transaksi.insertTransaksi(frame);
+            transaksi.insertTransaksi(frame, harga);
             // 4. Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                JOptionPane.showMessageDialog(frame, "Data inserted successfully!");
+                String layanan;
+                if(pelanggan.getJenisCucian() == "Satuan"){
+                    layanan = layanan_pcs.getPrintLayanan();
+                }else{
+                    layanan = layanan_kilo.getPrintLayanan();
+                }
+                JOptionPane.showMessageDialog(frame, "Data Sudah Masuk! \n"+ layanan);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(frame, "Error inserting data: " + ex.getMessage());
@@ -86,11 +94,11 @@ public class AddCustomer extends AddDataToTable{
 
             // Add the data to the DefaultTableModel
             while (rs.next()) {
-                Object[] row = new Object[7];
+                Object[] row = new Object[5];
                 row[0] = rs.getInt("ID");
                 row[1] = rs.getString("nama");
-                row[2] = rs.getString("jadwalKirim");
-                row[3] = rs.getString("statusBayar");
+                row[2] = rs.getString("waktuPesan");
+                row[3] = rs.getString("jadwalKirim");
                 row[4] = rs.getDouble("cost");
                 model.addRow(row);
             }

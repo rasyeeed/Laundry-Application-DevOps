@@ -4,12 +4,7 @@
  */
 package View;
 
-import java.sql.Connection;
-import Model.DBConnection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Random;
-import javax.swing.JOptionPane;
+import Model.RegisterModel;
 
 /**
  *
@@ -275,26 +270,8 @@ public class RegisterView extends javax.swing.JFrame {
         // Get the values from the input fields
         String username = jTextField1.getText();
         var password = jPasswordField1.getPassword();
-        DBConnection.connect();
-        String sql = "INSERT INTO users (ID, User, Password) VALUES (?, ?, ?)";
-        Random random = new Random();
-        String id = String .valueOf(random.nextInt(90000000) + 10000000);
-        try (PreparedStatement stmt = DBConnection.conn.prepareStatement(sql)) {
-            stmt.setString(1, id);
-            stmt.setString(2, username);
-            stmt.setString(3, new String(password));
-            int rowsInserted = stmt.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new user has been inserted into the database.");
-                this.setVisible(false);
-                new HomeView().setVisible(true);
-            } else {
-                System.out.println("No new user has been inserted into the database.");
-            }
-        } catch (SQLException ex) {
-            
-            System.out.println("An error occurred while inserting the new user: " + ex.getMessage());
-        }
+        RegisterModel creds = new RegisterModel(username, password);
+        creds.register(this);
     
     }//GEN-LAST:event_jButton2ActionPerformed
 

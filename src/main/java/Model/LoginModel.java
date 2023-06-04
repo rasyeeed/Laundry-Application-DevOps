@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  * @author flxnzz
  */
 public class LoginModel {
-    private String username;
-    private char[] password;
+    private final String username;
+    private final char[] password;
     
     public LoginModel(String username, char[] password){
         this.password = password;

@@ -85,8 +85,6 @@ public class ShowCustomer extends AddDataToTable{
             sql = "SELECT * FROM dataPelanggan";
             statement = conn.prepareStatement(sql);
             addToTable(sql, statement);
-            System.out.println(customerList.size());
-            System.out.println(customerList.get(0).getNama());
         } catch (SQLException ex) {
             System.out.println("Error retrieving data: " + ex.getMessage());
         }
