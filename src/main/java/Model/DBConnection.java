@@ -14,6 +14,10 @@ public class DBConnection {
     private static final String url = "jdbc:mysql://178.128.215.35:3306/Laundry";
     private static final String username = "Flxnzz";
     private static final String password = "Humanzz1337!";
+    private static final String url2 = "jdbc:mysql://localhost:3306/Laundry";
+    private static final String username2 = "vidya";
+    private static final String password2 = "Vdy19052003.";
+    
     public static Connection conn;
     
     public static void connect() {

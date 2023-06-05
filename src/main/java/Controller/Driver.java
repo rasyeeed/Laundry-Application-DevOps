@@ -15,6 +15,7 @@ import View.RegisterView;
 public class Driver {
 
     public static void main(String[] args) { 
+        DBConnection.connect();
         LoginView login = new LoginView();
         login.setVisible(true);
     }
