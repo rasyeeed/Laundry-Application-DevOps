@@ -56,3 +56,59 @@ Jumlah Cucian	: 3.0
 Jenis Layanan	: Regular
 Jenis Cucian	: Kiloan
 
+-----  Informasi Pelanggan 8 -----
+Nama pelanggan	: Haikal
+Alamat		: Bandung
+Kontak		: 081294292014
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Express
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 9 -----
+Nama pelanggan	: Haikal
+Alamat		: Bandung
+Kontak		: 081294292014
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Express
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 10 -----
+Nama pelanggan	: Rafi
+Alamat		: DAgo
+Kontak		: 081294029132
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Express
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 11 -----
+Nama pelanggan	: a
+Alamat		: a
+Kontak		: 2
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 12 -----
+Nama pelanggan	: a
+Alamat		: a
+Kontak		: 2
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 13 -----
+Nama pelanggan	: a
+Alamat		: a
+Kontak		: 3
+Jumlah Cucian	: 2.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 14 -----
+Nama pelanggan	: das
+Alamat		: adds
+Kontak		: 2
+Jumlah Cucian	: 3.0
+Jenis Layanan	: Regular
+Jenis Cucian	: Kiloan
+
