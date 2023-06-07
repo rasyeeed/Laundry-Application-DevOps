@@ -380,23 +380,12 @@ public class HomeView extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Poppins", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nama", "Alamat", "Kontak", "Berat/Jml Cucian", "Jenis Layanan", "Jenis Cucian"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jTable1.setEditingColumn(0);
         jTable1.setEditingRow(0);
         jTable1.setRowHeight(35);
@@ -455,7 +444,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cetakPelangganBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         Transaksi.setPreferredSize(new java.awt.Dimension(715, 511));
@@ -475,7 +464,15 @@ public class HomeView extends javax.swing.JFrame {
             new String [] {
                 "Nama", "Waktu Pemesanan", "Jadwal Pengiriman", "Status Pembayaran", "Total Harga"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable3.setRowHeight(40);
         jScrollPane3.setViewportView(jTable3);
 
@@ -534,7 +531,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(ContainsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainsLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(Transaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addComponent(Transaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
