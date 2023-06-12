@@ -38,8 +38,8 @@ public class AddCustomer extends AddDataToTable{
     
     
     public void insertData(javax.swing.JFrame frame, int harga){
-        Layanan_Kiloan layanan_kilo = new Layanan_Kiloan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
-        Layanan_pcsan layanan_pcs = new Layanan_pcsan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
+        Layanan layanan_kilo = new Layanan_Kiloan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
+        Layanan layanan_pcs = new Layanan_pcsan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());
         Connection connection = null;
         PreparedStatement statement = null;
         try {

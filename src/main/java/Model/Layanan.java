@@ -32,4 +32,10 @@ public class Layanan {
     public double getCucian(){
         return this.cucian;
     }
+    
+    public String getPrintLayanan(){
+    
+        return null;
+    
+    }
 }
