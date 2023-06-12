@@ -650,6 +650,7 @@ public class HomeView extends javax.swing.JFrame {
     private void cetakPelangganBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakPelangganBtnActionPerformed
         // TODO add your handling code here:
         ShowCustomer customer = new ShowCustomer();
+        // True: ShowCustomer customer = new ShowCustomer(jTable1);
         CetakLaporan report = new CetakLaporan(customer.getCustomerList());
         report.DownloadAsTxt(this);
     }//GEN-LAST:event_cetakPelangganBtnActionPerformed

@@ -80,6 +80,7 @@ public class ShowCustomer extends AddDataToTable{
         }
     }
     
+    @Override
     public void showData(){
         try { 
             sql = "SELECT * FROM dataPelanggan";

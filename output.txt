@@ -1,114 +1,50 @@
-Laporan Laundry pada tanggal: 5 juni 2023
+Laporan Laundry pada tanggal: 12 juni 2023
 -----------------------------------
 -----  Informasi Pelanggan 1 -----
-Nama pelanggan	: Haikal
-Alamat		: Bandung
-Kontak		: 081294292014
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Express
-Jenis Cucian	: Satuan
+Nama pelanggan	: Rafidhia Haikal P.
+Alamat		: Kota Serang, Banten 
+Kontak		: 081203821928
+Jumlah Cucian	: 4.0
+Jenis Layanan	: Kilat
+Jenis Cucian	: Kiloan
 
 -----  Informasi Pelanggan 2 -----
-Nama pelanggan	: Haikal
-Alamat		: Bandung
-Kontak		: 081294292014
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Express
-Jenis Cucian	: Satuan
-
------  Informasi Pelanggan 3 -----
-Nama pelanggan	: Rafi
-Alamat		: DAgo
-Kontak		: 081294029132
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Express
-Jenis Cucian	: Satuan
-
------  Informasi Pelanggan 4 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 2
-Jumlah Cucian	: 3.0
+Nama pelanggan	: Fadel
+Alamat		: Sukabirus
+Kontak		: 081392049158
+Jumlah Cucian	: 5.0
 Jenis Layanan	: Regular
 Jenis Cucian	: Kiloan
 
------  Informasi Pelanggan 5 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 2
+-----  Informasi Pelanggan 3 -----
+Nama pelanggan	: Dara
+Alamat		: Jakarta
+Kontak		: 081420483012
+Jumlah Cucian	: 5.0
+Jenis Layanan	: Kilat
+Jenis Cucian	: Satuan
+
+-----  Informasi Pelanggan 4 -----
+Nama pelanggan	: Nagip
+Alamat		: Tegal
+Kontak		: 083103835710
 Jumlah Cucian	: 3.0
+Jenis Layanan	: Express
+Jenis Cucian	: Kiloan
+
+-----  Informasi Pelanggan 5 -----
+Nama pelanggan	: Alienzz!
+Alamat		: Venuz!
+Kontak		: +1 484 473 1018
+Jumlah Cucian	: 32.0
 Jenis Layanan	: Regular
 Jenis Cucian	: Kiloan
 
 -----  Informasi Pelanggan 6 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 3
-Jumlah Cucian	: 2.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
-
------  Informasi Pelanggan 7 -----
-Nama pelanggan	: das
-Alamat		: adds
-Kontak		: 2
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
-
------  Informasi Pelanggan 8 -----
-Nama pelanggan	: Haikal
-Alamat		: Bandung
-Kontak		: 081294292014
-Jumlah Cucian	: 3.0
+Nama pelanggan	: Humanzz!
+Alamat		: Earth!
+Kontak		: +7(39554)20623
+Jumlah Cucian	: 7.0
 Jenis Layanan	: Express
 Jenis Cucian	: Satuan
-
------  Informasi Pelanggan 9 -----
-Nama pelanggan	: Haikal
-Alamat		: Bandung
-Kontak		: 081294292014
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Express
-Jenis Cucian	: Satuan
-
------  Informasi Pelanggan 10 -----
-Nama pelanggan	: Rafi
-Alamat		: DAgo
-Kontak		: 081294029132
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Express
-Jenis Cucian	: Satuan
-
------  Informasi Pelanggan 11 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 2
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
-
------  Informasi Pelanggan 12 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 2
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
-
------  Informasi Pelanggan 13 -----
-Nama pelanggan	: a
-Alamat		: a
-Kontak		: 3
-Jumlah Cucian	: 2.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
-
------  Informasi Pelanggan 14 -----
-Nama pelanggan	: das
-Alamat		: adds
-Kontak		: 2
-Jumlah Cucian	: 3.0
-Jenis Layanan	: Regular
-Jenis Cucian	: Kiloan
 

@@ -13,7 +13,7 @@ public class Layanan {
     private final String pilihanWaktu;
     public String waktu;
     public String layanan;
-    public double cucian;
+    private double cucian;
     
     public Layanan(String pilihanLayanan, String pilihanWaktu,double cucian){
         this.pilihanLayanan = pilihanLayanan;
