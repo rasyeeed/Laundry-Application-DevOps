@@ -11,12 +11,12 @@ import java.sql.SQLException;
  * @author Haikal
  */
 public class DBConnection {
-    private static final String url = "jdbc:mysql://178.128.215.35:3306/Laundry";
-    private static final String username = "Flxnzz";
-    private static final String password = "Humanzz1337!";
+    private static final String url = "jdbc:mysql://117.53.47.247:3306/Laundry";
+    private static final String username = "Gu3st";
+    private static final String password = "gu3ss-my-passwd";
     private static final String url2 = "jdbc:mysql://localhost:3306/Laundry";
-    private static final String username2 = "vidya";
-    private static final String password2 = "Vdy19052003.";
+    private static final String username2 = "Wzrd";
+    private static final String password2 = "Humanzz1337";
     
     public static Connection conn;
     
