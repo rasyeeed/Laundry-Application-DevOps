@@ -18,6 +18,14 @@
             <version>4.11</version>
         </dependency>
     </dependencies>
+    
+    <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/rasyeeed/Laundry-Application-DevOps</url>
+    </repository>
+  </distributionManagement>
 
     <build>
     <plugins>
